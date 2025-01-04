@@ -36,15 +36,15 @@ const SmallNavbar: React.FC<SmallNavbarProps> = () => {
 
                 {menuOpen && (
                     <ul className="absolute right-0 top-full mt-2 bg-white shadow-lg p-2 text-xs z-50">
-                        {/* <li className="py-1 px-2 "><a href="/">Home</a></li>
-                        <li className="py-1 px-2 ">About</li>
+                        <li className="py-1 px-2 "><a href="/">Home</a></li>
+                        {/* <li className="py-1 px-2 ">About</li>
                         <li className="py-1 px-2 "><a href="/products">Products</a></li>
                         <li className="py-1 px-2 ">Contact</li> */}
                         { !isAuthenticated && <li className="py-1 px-2 ">
                             <button
                             onClick={() => navigate(SIGNUP_PAGE)}
                             className="bg-primary text-white rounded-md px-1 text-xxs">
-                                Sign Up
+                                Register
                             </button>
                         </li>}
                         { !isAuthenticated && <li className="py-1 px-2 ">
@@ -55,7 +55,7 @@ const SmallNavbar: React.FC<SmallNavbarProps> = () => {
                             </button>
                         </li>} 
                         {/* { isAuthenticated && <li className="py-1 px-2 "><a href="/cart">Cart</a></li>} */}
-                        { isAuthenticated && <li className="py-1 px-2 "><a href="/orders">Orders</a></li>}
+                        { isAuthenticated && <li className="py-1 px-2 "><a href="/appointments">Appointments</a></li>}
                         { isAuthenticated && <li className="py-1 px-2 ">
                             <button
                             onClick={() => logoutHandler()}

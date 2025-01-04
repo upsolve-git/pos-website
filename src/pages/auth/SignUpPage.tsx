@@ -30,8 +30,6 @@ const SignUpPage: React.FC<SignUpPageProps> = () => {
         confPassword,
         confPasswordErr,
         handleConfPassword,
-        accType,
-        handleAccTypeChange,
         signupHandler,
         firstName,
         handleFirstNameChange,
@@ -50,7 +48,7 @@ const SignUpPage: React.FC<SignUpPageProps> = () => {
                 <div id="form-title-wrapper"
                     className="flex flex-col items-center justify-center my-4">
                     <h1
-                        className="text-md font-medium tablet:text-xl desktop:text-2xl">
+                        className="text-md font-manrope font-medium tablet:text-xl desktop:text-2xl">
                         Create an account
                     </h1>
                     <p
@@ -96,11 +94,11 @@ const SignUpPage: React.FC<SignUpPageProps> = () => {
                 <AuthSubmitButton
                     disabled={checkValues()}
                     error={signupErr}
-                    label="Create an account"
+                    label="Continue"
                     callbackFunc={signupHandler} />
-                <p
+                {/* <p
                     className="text-darkgray block text-xs">or continue with </p>
-                <GoogleAuthButton />
+                <GoogleAuthButton /> */}
             </FormCard>
         </div>
     )

@@ -67,11 +67,11 @@ const SignInPage: React.FC<SignInPageProps> = ()=>{
                 error={loginErr}
                 label="Login Now!"
                 callbackFunc={loginHandler}/>
-                <p
+                {/* <p
                 className="text-darkgray block text-xxs tablet:text-xs desktop:text-sm">
                     or continue with 
                 </p>
-                <GoogleAuthButton/>
+                <GoogleAuthButton/> */}
             </FormCard>
         </div>
     )

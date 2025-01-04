@@ -7,11 +7,10 @@ export const signupReq = async (email: string|undefined, password:string|undefin
         let promise = axios.post(SIGNUP_ENDPOINT, {
             "email": email,
             "password": password,
-            "accType": accType,
-            "firstName":firstName,
-            "lastName":lastName,
-            "mobile":phone,
-            "countryCode": countryCode
+            "first_name":firstName,
+            "last_name":lastName,
+            "phone_number":phone,
+            "role":"user",
         }); 
         return promise
     } 

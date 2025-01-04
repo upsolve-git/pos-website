@@ -86,6 +86,7 @@ export const useSignUpPage = ()=>{
                 console.log("inside signup success", res)
                 setSignupErr('')
                 navigate(LOGIN_PAGE)
+                
             })
             .catch(err=>{
                 console.log(err)

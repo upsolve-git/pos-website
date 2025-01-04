@@ -103,15 +103,18 @@ const ManageOrder: React.FC<ManageOrderProps> = ({ isOpen, onClose, order }) => 
             order.products.map(item=><OrderProductItem orderProduct={item}/>)
           }
         </div>
-        <div
-        className='w-12'>
-          <CommonButton 
-          label='Cancel'
-          primaryColor='red'
-          secondaryColor='white'
-          callBack={onClose}
-          />
-        </div>
+        {
+          !(order.status === 'complete') &&
+          <div
+          className='w-12'>
+            <CommonButton 
+            label='Cancel'
+            primaryColor='red'
+            secondaryColor='white'
+            callBack={onClose}
+            />
+          </div>
+        }
         <div
         className='w-12'>
           <CommonButton 

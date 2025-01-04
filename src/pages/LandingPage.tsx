@@ -1,17 +1,19 @@
 import React from "react";
 
-import BestSellerSection from "../ui/sections/BestSellerSectiom/BestSellerSection";
-import TopSellingShadesSection from "../ui/sections/TopSellingShadesSection/TopSellingShadesSection";
-import OurProductsSection from "../ui/sections/OurProductsSection/OurProductsSection";
-import ContactUsSection from "../ui/sections/ContactUsSection/ContactUsSection";
-import FooterSection from "../ui/sections/FooterSection/FooterSection";
-import MainSection from "../ui/sections/MainSection/MainSection";
-import Navbar from "../ui/organisms/Navbar/Navbar";
+// import BestSellerSection from "../ui/sections/BestSellerSectiom/BestSellerSection";
+// import TopSellingShadesSection from "../ui/sections/TopSellingShadesSection/TopSellingShadesSection";
+// import OurProductsSection from "../ui/sections/OurProductsSection/OurProductsSection";
+// import ContactUsSection from "../ui/sections/ContactUsSection/ContactUsSection";
+// import FooterSection from "../ui/sections/FooterSection/FooterSection";
+// import MainSection from "../ui/sections/MainSection/MainSection";
+// import Navbar from "../ui/organisms/Navbar/Navbar";
 
 import { useMediaWidth } from "../utils/hooks/useMediaWidth";
 
-import MobileMainSection from "../ui/sections/MainSection/MobileMainSection";
-import AboutUs from "../ui/sections/AboutUsSection/AboutUsSection";
+// import MobileMainSection from "../ui/sections/MainSection/MobileMainSection";
+// import AboutUs from "../ui/sections/AboutUsSection/AboutUsSection";
+// import ProductPreviewList from "../ui/organisms/ProductPreviewList/ProductPreviewList";
+import ServicesSection from "../ui/sections/ServicesSection/ServicesSection";
 
 interface LandingPageProps{}
 
@@ -36,15 +38,11 @@ const LandingPage: React.FC<LandingPageProps> = ()=>{
         //         {/* <FooterSection /> */}
         //     </div>
         // </div>
-        <div>
-            <div
-            className="w-[90%] mx-auto mt-10">
-                <h1
-                className="font-semibold text-primary text-md tablet:text-xl desktop:text-2xl monitor:text-5xl">
-                    SERVICES
-                </h1>
-                
-            </div>
+
+        
+        <div
+        className="w-[90%] mx-auto mt-10">   
+            <ServicesSection />
         </div>
     )
 }

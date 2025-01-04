@@ -18,8 +18,11 @@ import OrderSuccessPage from "../pages/OrderSuccessPage";
 // import UserProfilePage from "../pages/user/UserProfilePage";
 import ErrorPage from "../pages/ErrorPage";
 import AdminSignInPage from "../pages/auth/AdminSignInPage";
+import ServiceDetailPage from "../pages/ServiceDetailPage";
 
 import { getAuth } from "../services/auth";
+import AppointmentHistoryPage from "../pages/AppointmentHistoryPage";
+import AppointmentDetailPage from "../pages/AppointmentDetailPage";
 
 const authLoader = async () => {
     console.log('auth redirect');
@@ -42,31 +45,42 @@ const router = createBrowserRouter([
                 element: <LandingPage />,
             },
             {
-                path: "products",
-                element: <ProductsPage />
+                path: "/serviceDetail/:id",
+                element: <ServiceDetailPage />
+            },
+            // {
+            //     path: "serviceDetail/:id",
+            //     element: <ProductDetailPage />
+            // },
+            // {
+            //     path: "products",
+            //     element: <ProductsPage />
+            // },
+            // {
+            //     path: "productDetail/:id",
+            //     element: <ProductDetailPage />
+            // },
+            // {
+            //     path: "cart",
+            //     element: <Cart />,
+            //     // loader: authLoader
+            // },
+            {
+                path: "appointments",
+                element: <AppointmentHistoryPage />,
             },
             {
-                path: "productDetail/:id",
-                element: <ProductDetailPage />
+                path: "/appointmentDetail/:id",
+                element: <AppointmentDetailPage />
             },
-            {
-                path: "cart",
-                element: <Cart />,
-                // loader: authLoader
-            },
-            {
-                path: "orders",
-                element: <OrderHistoryPage />,
-                loader: authLoader
-            },
-            {
-                path: "ordersuccess/:id",
-                element: <OrderSuccessPage />
-            },
-            {
-                path: "admin-home",
-                element: <AdminPage />
-            },
+            // {
+            //     path: "ordersuccess/:id",
+            //     element: <OrderSuccessPage />
+            // },
+            // {
+            //     path: "admin-home",
+            //     element: <AdminPage />
+            // },
             // {
             //     path: "userprofile",
             //     element: <UserProfilePage />,

@@ -18,35 +18,44 @@ const BigNavbar: React.FC<BigNavbarProps> = ()=>{
             styles="w-14 h-14 desktop:w-20 desktop:h-20 opacity-0"
             fill="#C26F2D" />
             <ul
-            className="text-xxs flex hover:cursor-pointer items-center justify-between text-primary w-[15%] desktop:text-sm">
-                {/* <li><a href="/">Home</a></li>
-                <li>About</li>
-                <li><a href="/products">Products</a></li> */}
-                { isAuthenticated && <li><a href="/orders">Orders</a></li> }
-                {/* <li>Contact</li> */}
-                { !isAuthenticated && <li>
-                    <button 
-                    onClick={() => navigate(SIGNUP_PAGE)}
-                    className="border border-primary px-2 py-1 rounded-lg">
-                        Sign Up
-                    </button>
-                </li>}
-                { !isAuthenticated && <li>
-                    <button
-                    onClick={() => navigate(LOGIN_PAGE)}
-                    className="bg-primary text-white px-2 py-1 rounded-lg">
-                        Sign In
-                    </button>
-                </li> } 
-                {/* { isAuthenticated && <li><a href="/cart">Cart</a></li>} */}
-                { isAuthenticated && <li>
-                    <button
-                    onClick={() => logoutHandler()}
-                    className="bg-primary text-white px-2 py-1 rounded-lg">
-                        Log out
-                    </button>
-                </li> } 
-            </ul>
+    className="text-xxs flex items-center justify-end text-primary space-x-4 desktop:text-sm">
+    <li><a href="/">Home</a></li>
+    {isAuthenticated && (
+        <li>
+            <a href="/appointments">Appointments</a>
+        </li>
+    )}
+    {!isAuthenticated && (
+        <li>
+            <button
+                onClick={() => navigate(SIGNUP_PAGE)}
+                className="border border-primary px-2 py-1 rounded-lg">
+                Register
+            </button>
+        </li>
+    )}
+    {!isAuthenticated && (
+        <li>
+            <button
+                onClick={() => navigate(LOGIN_PAGE)}
+                className="bg-primary text-white px-2 py-1 rounded-lg">
+                Sign In
+            </button>
+        </li>
+    )}
+    {isAuthenticated && (
+        <li>
+            <button
+                onClick={() => logoutHandler()}
+                className="bg-primary text-white px-2 py-1 rounded-lg">
+                Log out
+            </button>
+        </li>
+    )}
+</ul>
+
+
+
         </div>
     )
 }
