@@ -40,7 +40,7 @@ const ServiceDetailPage: React.FC<ServiceDetailPageProps> = () => {
 
         try {
           // Step 1: Check if user is authenticated
-          const authResponse = await axios.get("http://pos-backend-env.eba-ammp5czi.us-east-1.elasticbeanstalk.com/api/auth/getauth", { withCredentials: true });
+          const authResponse = await axios.get("https://pos-backend-env.eba-ammp5czi.us-east-1.elasticbeanstalk.com/api/auth/getauth", { withCredentials: true });
           customer_id = authResponse.data.userId;  
           console.log(customer_id)
           } catch (err: any) {
@@ -54,7 +54,7 @@ const ServiceDetailPage: React.FC<ServiceDetailPageProps> = () => {
         const service_id = service.service_id
 
         console.log(customer_id, service_id, selectedDate, selectedSlot);
-        const response = await axios.post("http://pos-backend-env.eba-ammp5czi.us-east-1.elasticbeanstalk.com/api/customer/book-appointment", {
+        const response = await axios.post("https://pos-backend-env.eba-ammp5czi.us-east-1.elasticbeanstalk.com/api/customer/book-appointment", {
           customer_id,
           service_id,
           date: selectedDate,

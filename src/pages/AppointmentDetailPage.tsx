@@ -11,7 +11,7 @@ const AppointmentDetailPage: React.FC = () => {
   const handleCancelAppointment = async () => {
     try {
       const response = await axios.post(
-        "http://pos-backend-env.eba-ammp5czi.us-east-1.elasticbeanstalk.com/api/customer/cancel-appointment",
+        "https://pos-backend-env.eba-ammp5czi.us-east-1.elasticbeanstalk.com/api/customer/cancel-appointment",
         { appointment_id: appointment.appointment_id },
         { withCredentials: true } // Ensures authentication token or session cookie is sent
       );
