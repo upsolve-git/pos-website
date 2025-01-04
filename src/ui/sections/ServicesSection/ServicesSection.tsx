@@ -11,7 +11,7 @@ const ServicesGrid = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/customer/services");
+        const response = await axios.get("http://pos-backend-env.eba-ammp5czi.us-east-1.elasticbeanstalk.com/api/customer/services");
         setServices(response.data); // Assuming the API returns a list of services
         setLoading(false);
       } catch (err: any) {
