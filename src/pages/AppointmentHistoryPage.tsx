@@ -11,9 +11,9 @@ const AppointmentHistoryPage = () => {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const authResponse = await axios.get("https://pos-backend-env.eba-ammp5czi.us-east-1.elasticbeanstalk.com/api/auth/getauth", { withCredentials: true });
+        const authResponse = await axios.get("https://posapi.canadiangelnails.com/api/auth/getauth", { withCredentials: true });
         const customer_id = authResponse.data.userId;  
-        const response = await axios.get(`https://pos-backend-env.eba-ammp5czi.us-east-1.elasticbeanstalk.com/api/customer/appointments/customer/${customer_id}`);
+        const response = await axios.get(`https://posapi.canadiangelnails.com/api/customer/appointments/customer/${customer_id}`);
         setAppointments(response.data); // Assuming the API returns a list of appointments
         setLoading(false);
       } catch (err: any) {
