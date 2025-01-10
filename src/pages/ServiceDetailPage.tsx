@@ -32,7 +32,7 @@ const ServiceDetailPage: React.FC = () => {
     const fetchStaff = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/customer/available-staff`,
+          `https://posapi.canadiangelnails.com/api/customer/available-staff`,
           { params: { serviceId: service.service_id } }
         );
         setStaffList(response.data);
@@ -52,7 +52,7 @@ const ServiceDetailPage: React.FC = () => {
 
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/customer/booked-appointments`,
+          `https://posapi.canadiangelnails.com/api/customer/booked-appointments`,
           { params: { staffId: selectedStaff } }
         );
         setBookedAppointments(response.data); // { date: "YYYY-MM-DD", time: "HH:mm" }
@@ -77,7 +77,7 @@ const ServiceDetailPage: React.FC = () => {
 
       try {
         const authResponse = await axios.get(
-          "http://localhost:5000/api/auth/getauth",
+          "https://posapi.canadiangelnails.com/api/auth/getauth",
           { withCredentials: true }
         );
         customer_id = authResponse.data.userId;
@@ -91,7 +91,7 @@ const ServiceDetailPage: React.FC = () => {
       const formattedDate = selectedDate.toISOString().split("T")[0];
 
       const response = await axios.post(
-        "http://localhost:5000/api/customer/book-appointment",
+        "https://posapi.canadiangelnails.com/api/customer/book-appointment",
         {
           customer_id,
           service_id,
@@ -183,7 +183,7 @@ const ServiceDetailPage: React.FC = () => {
                 setSelectedTime(null); // Reset time when date changes
               }}
               minDate={new Date()}
-              maxDate={new Date(new Date().setDate(new Date().getDate() + 30))}
+              // maxDate={new Date(new Date().setDate(new Date().getDate() + 30))}
               dateFormat="yyyy-MM-dd"
               className="p-3 border-2 border-gray-300 rounded-md w-full"
               placeholderText="Select a day"
