@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import ActionButton from "../ui/atoms/buttons/ActionButton/ActionButton";
+
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
+import ActionButton from "../ui/atoms/buttons/ActionButton/ActionButton";
+
+import { fetchStaff } from "../services/fetchStaff";
+import { fetchBookedAppointments } from "../services/fetchBookedAppointments";
+import { bookAppointment, getAuthCustomerId } from "../services/bookAppointment";
 
 const ServiceDetailPage: React.FC = () => {
   const location = useLocation();
@@ -29,40 +35,33 @@ const ServiceDetailPage: React.FC = () => {
 
   // Fetch staff list for the service
   useEffect(() => {
-    const fetchStaff = async () => {
+    const getStaffList = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/api/customer/available-staff`,
-          { params: { serviceId: service.service_id } }
-        );
-        setStaffList(response.data);
+        const res = await fetchStaff({ serviceId: service.service_id });
+        setStaffList(res);
       } catch (error) {
-        console.error("Error fetching staff:", error);
-        alert("Failed to fetch available staff.");
+        alert("Failed to fetch staff list.");
       }
     };
 
-    fetchStaff();
+    getStaffList();
   }, [service.service_id]);
 
   // Fetch booked appointments for selected staff in the next 30 days
   useEffect(() => {
-    const fetchBookedAppointments = async () => {
-      if (!selectedStaff) return;
+    const loadBookedAppointments = async () => {
+      if (!selectedStaff) return; // Early return if no staff selected
 
       try {
-        const response = await axios.get(
-          `http://localhost:5000/api/customer/booked-appointments`,
-          { params: { staffId: selectedStaff } }
-        );
-        setBookedAppointments(response.data); // { date: "YYYY-MM-DD", time: "HH:mm" }
+        const data = await fetchBookedAppointments({ selectedStaff });
+        setBookedAppointments(data); // Update state with retrieved data
       } catch (error) {
-        console.error("Error fetching booked appointments:", error);
         alert("Failed to fetch booked appointments.");
+        console.error("Error fetching booked appointments:", error);
       }
     };
 
-    fetchBookedAppointments();
+    loadBookedAppointments();
   }, [selectedStaff]);
 
   const appointmentHandler = async () => {
@@ -73,33 +72,26 @@ const ServiceDetailPage: React.FC = () => {
 
     try {
       setLoading(true);
-      let customer_id;
 
+      // Get authenticated customer ID
+      let customerId;
       try {
-        const authResponse = await axios.get(
-          "http://localhost:5000/api/auth/getauth",
-          { withCredentials: true }
-        );
-        customer_id = authResponse.data.userId;
-      } catch (err: any) {
+        customerId = await getAuthCustomerId();
+      } catch (err) {
         alert("You need to log in to book an appointment.");
         navigate("/auth/sign-in");
         return;
       }
 
-      const service_id = service.service_id;
+      // Prepare booking details
       const formattedDate = selectedDate.toISOString().split("T")[0];
-
-      const response = await axios.post(
-        "http://localhost:5000/api/customer/book-appointment",
-        {
-          customer_id,
-          service_id,
-          staff_id: selectedStaff,
-          date: formattedDate,
-          startTime: selectedTime,
-        }
-      );
+      const response = await bookAppointment({
+        customerId,
+        serviceId: service.service_id,
+        staffId: selectedStaff,
+        date: formattedDate,
+        startTime: selectedTime,
+      });
 
       if (response.status === 201) {
         alert("Appointment booked successfully!");
