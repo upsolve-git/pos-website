@@ -54,6 +54,7 @@ const ServiceDetailPage: React.FC = () => {
       try {
         const response = await axios.get(
           base_url+`api/customer/booked-appointments`,
+
           { params: { staffId: selectedStaff } }
         );
         setBookedAppointments(response.data); // { date: "YYYY-MM-DD", time: "HH:mm" }
