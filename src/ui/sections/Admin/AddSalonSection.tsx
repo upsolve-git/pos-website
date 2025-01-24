@@ -31,7 +31,7 @@ export const AddSalonSection: React.FC<AddSalonSectionProps> = () => {
   } = useAddSalonForm();
 
   return (
-    <div className="flex justify-evenly">
+    <div className="flex justify-evenly pb-6 tablet:pb-0">
       <div className="flex flex-col items-center">
         <table className="table-auto text-md border-separate border-spacing-4">
           <tbody>

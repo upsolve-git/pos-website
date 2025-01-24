@@ -33,7 +33,7 @@ const ServicesGrid = () => {
   
 
   return (
-    <div className="grid grid-cols-1 gap-6 desktop:grid-cols-3">
+    <div className="grid grid-cols-1 gap-6 tablet:grid-cols-2 desktop:grid-cols-3">
       {services.map((service) => (
         <ServiceCard key={service.name} service={service} />
       ))}

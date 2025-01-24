@@ -11,7 +11,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = () =>{
         className="font-montserrat min-h-screen flex flex-col bg-secondary">
             <Navbar />
             <main
-            className="flex-grow overflow-hidden">
+            className="flex-grow overflow-x-hidden">
                 <Outlet />
             </main>
             {/* <FooterSection /> */}

@@ -7,11 +7,11 @@ interface MenuProps{
 }
 
 const Menu: React.FC<MenuProps> = ({menuItems, selectedMenuItem, onClick})=>{
-
     return(
-        <div className="w-[15%] bg-primary p-4 rounded-r-lg">
+        <div className="flex justify-between items-center tablet:block tablet:w-[15%] bg-primary p-4 tablet:rounded-r-lg">
             <h2 className="text-lg font-bold mb-4 text-white">Menu</h2>
-            <ul>
+            <ul
+            className="flex tablet:block">
                 {menuItems.map((item) => (
                     <li
                         key={item}
