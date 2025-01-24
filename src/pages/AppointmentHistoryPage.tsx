@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AppointmentCard from "../ui/organisms/AppointmentCard/AppointmentCard";
 import { Appointment } from "../interfaces/Appointment";
+import { base_url } from "../constants/routes";
 
 const AppointmentHistoryPage = () => {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
@@ -11,9 +12,9 @@ const AppointmentHistoryPage = () => {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const authResponse = await axios.get("https://posapi.canadiangelnails.com/api/auth/getauth", { withCredentials: true });
+        const authResponse = await axios.get(base_url+"api/auth/isAdmin", { withCredentials: true });
         const customer_id = authResponse.data.userId;  
-        const response = await axios.get(`https://posapi.canadiangelnails.com/api/customer/appointments/customer/${customer_id}`);
+        const response = await axios.get(base_url+`api/customer/appointments/customer/${customer_id}`);
         setAppointments(response.data); // Assuming the API returns a list of appointments
         setLoading(false);
       } catch (err: any) {

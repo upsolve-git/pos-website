@@ -6,7 +6,7 @@ export const PRODUCTS_PAGE = '/products'
 // // // ADMIN ROUTES
 export const LOGIN_ENDPOINT = '/api/auth/login'
 export const ADMIN_LOGIN_ENDPOINT = '/adminlogin'
-export const ADMIN_HOME = '/admin-home'
+export const ADMIN_HOME = '/admin/home'
 export const ADMIN_AUTH = '/getadminauth'
 export const ADMIN_ORDERS = '/admingetorders'
 export const ADMIN_CONFIRM_ORDER = '/adminconfirmorder'
@@ -36,7 +36,12 @@ export const GET_AUTH_ENDPOINT = '/getauth'
 export const GET_ORDER = '/order/'
 export const LANDING_PAGE = '/landingpage'
 
-export const GET_AUTH_REQ = 'http://localhost:5000/api/auth/getauth'
-export const AVAIL_STAFF_ENDPOINT = 'http://localhost:5000/api/customer/available-staff'
-export const BOOKED_APPOINTS_ENDPOINT = 'http://localhost:5000/api/customer/booked-appointments'
-export const BOOK_APPOINT_ENDPOINT = 'http://localhost:5000/api/customer/book-appointment'
+
+// export const base_url = 'http://localhost:5000/'
+export const base_url = 'https://posapi.canadiangelnails.com'
+
+export const GET_AUTH_REQ = base_url+'api/auth/isAdmin'
+export const AVAIL_STAFF_ENDPOINT = base_url+'api/customer/available-staff'
+export const BOOKED_APPOINTS_ENDPOINT = base_url+'api/customer/booked-appointments'
+export const BOOK_APPOINT_ENDPOINT = base_url+'api/customer/book-appointment'
+

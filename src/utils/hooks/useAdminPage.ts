@@ -28,11 +28,6 @@ export const useAdminPage = ()=>{
     let [users, setUsers] = useState<User[]>([])
     const [colors, setColors] = useState<Color[]>([]);
 
-    useEffect(() => {
-        getCategories();
-        getProducts();
-        getUsers();
-    }, [])
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFiles = e.target.files;

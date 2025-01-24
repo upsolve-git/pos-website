@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ServiceCard from "../../organisms/ServiceCard/ServiceCard";
 import { Service } from "../../../interfaces/Service";
+import { base_url } from "../../../constants/routes";
 
 const ServicesGrid = () => {
   const [services, setServices] = useState<Service[]>([]);
@@ -11,7 +12,7 @@ const ServicesGrid = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await axios.get("https://posapi.canadiangelnails.com/api/customer/services");
+        const response = await axios.get(base_url+"api/customer/services");
         setServices(response.data); // Assuming the API returns a list of services
         setLoading(false);
       } catch (err: any) {
