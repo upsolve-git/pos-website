@@ -9,7 +9,7 @@ import AuthSubmitButton from "../../ui/atoms/buttons/ActionButton/AuthSubmitButt
 import GoogleAuthButton from "../../ui/atoms/buttons/GoogleAuthButton/GoogleAuthButton";
 
 import { useNavigate } from 'react-router-dom';
-import { adminLoginReq } from "../../services/login";
+import { adminLoginReq, loginReq } from "../../services/login";
 import { ADMIN_HOME } from "../../constants/routes";
 
 interface AdminSignInPageProps{}
@@ -21,7 +21,7 @@ const AdminSignInPage: React.FC<AdminSignInPageProps> = ()=>{
     const navigate = useNavigate();
 
     const handleAdminLogin = async() => {
-        await adminLoginReq(email, password)
+            await loginReq(email, password)
             .then(res=>{
                 console.log("inside signin success", res)
                 navigate(ADMIN_HOME)

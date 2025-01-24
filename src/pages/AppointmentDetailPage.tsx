@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import ActionButton from "../ui/atoms/buttons/ActionButton/ActionButton";
+import { base_url } from "../constants/routes";
 
 const AppointmentDetailPage: React.FC = () => {
   const location = useLocation();
@@ -11,7 +12,7 @@ const AppointmentDetailPage: React.FC = () => {
   const handleCancelAppointment = async () => {
     try {
       const response = await axios.post(
-        "https://posapi.canadiangelnails.com/api/customer/cancel-appointment",
+        base_url+"api/customer/cancel-appointment",
         { appointment_id: appointment.appointment_id },
         { withCredentials: true } // Ensures authentication token or session cookie is sent
       );

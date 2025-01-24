@@ -1,29 +1,44 @@
-import Navbar from "../../ui/organisms/Navbar/BigNavbar";
 import { useAdminPage } from "../../utils/hooks/useAdminPage";
 import Menu from "../../ui/organisms/Admin/Menu";
-import AddProducts from "../../ui/sections/AdminSection/AddProductsSection";
-import AddCategory from "../../ui/sections/AdminSection/AddCategorySection";
-import ProductPreviewListAdmin from "../../ui/organisms/ProductPreviewList/ProductPreviewListAdmin";
-import UserList from "../../ui/organisms/UsersList/UsersList";
+import { AddSalonSection } from "../../ui/sections/Admin/AddSalonSection";
+import SalonsTable from "../../ui/sections/Admin/SalonsTable";
+import { dumsalons } from "../../constants/dumySalons";
 import { useEffect, useState } from "react";
 import { getAdminAuth } from "../../services/login";
-import Orders from "../../ui/sections/AdminSection/Orders";
-
+import axios from "axios";
+import { base_url } from "../../constants/routes";
+import { useNavigate } from "react-router-dom";
 interface AdminPageProps{}
 
 const AdminPage: React.FC<AdminPageProps> = ()=>{
+    const navigate = useNavigate();
 
     let [adminAuth, setAdminAuth] = useState<boolean>(false); 
 
     useEffect(() => {
+
+        
         const getAuth = async() => {
-            await getAdminAuth()
-        .then(res => {
-            setAdminAuth(true)
-        })
-        .catch(err => {
-            setAdminAuth(false)
-        })
+            try {
+                const authResponse = await axios.get(
+                  base_url+"api/auth/isAdmin",
+                  { withCredentials: true }
+                );
+                console.log(authResponse.data.role)
+                const role = authResponse.data.role;
+                if(role!=="admin") {
+                // alert("You need to log in to book an appointment.");
+                navigate("/auth/admin");
+                setAdminAuth(false)
+                return;
+                }
+                setAdminAuth(true)
+              } catch (err: any) {
+                // alert("You need to log in to book an appointment.");
+                navigate("/auth/admin");
+                setAdminAuth(false)
+                return;
+              }
         } 
         getAuth()
     })
@@ -31,34 +46,7 @@ const AdminPage: React.FC<AdminPageProps> = ()=>{
     let {
         menuItems,
         selectedMenuItem,
-        handleSelectedMenuItemChange,
-        category,
-        handleCategoryChange,
-        addCategoryHandler,
-        name,
-        productType,
-        price,
-        description,
-        discountedPrice,
-        handleDescriptionChange,
-        handleDiscountedPriceChange,
-        handleNameChange,
-        handlePriceChange,
-        handleProductTypeChange,
-        addProductHandler,
-        categories,
-        categoryName,
-        handleCategoryNameChange,
-        handleFileChange,
-        addProductsError,
-        products,
-        users,
-        addBestSellerhandler,
-        addNewSellerhandler,
-        colors,
-        handleAddColor,
-        handleDiscountedBusinessPriceChange,
-        discountedBusinessPrice
+        handleSelectedMenuItemChange
     } = useAdminPage()
     if(!adminAuth) {
             return <div>NOT AUTHORIZED</div>
@@ -66,7 +54,7 @@ const AdminPage: React.FC<AdminPageProps> = ()=>{
     return (
         <div className="flex flex-col h-screen">
             {/* <Navbar /> */}
-            <div className="flex flex-grow">
+            <div className="tablet:flex tablet:flex-grow">
                 <Menu
                 menuItems={menuItems}
                 selectedMenuItem={selectedMenuItem}
@@ -75,46 +63,15 @@ const AdminPage: React.FC<AdminPageProps> = ()=>{
 
                 <div className="flex-1 bg-secondary p-8">
                     <h2 className="text-lg text-center font-bold">{selectedMenuItem}</h2>
-                    {selectedMenuItem === "Add Category" ? 
-                    <AddCategory
-                    category={categoryName}
-                    setCategory={handleCategoryNameChange}
-                    addCategory={addCategoryHandler}
-                    success={false}
-                    error={false}
-                    />
-                    : selectedMenuItem === "Add Products" ? 
-                    <AddProducts
-                    prodCostBusiness={discountedBusinessPrice}
-                    setProdCostBusiness={handleDiscountedBusinessPriceChange}
-                    colors={colors}
-                    setColors={handleAddColor}
-                    categories={categories}
-                    prodName={name}
-                    prodCategory={category}
-                    prodDescription={description}
-                    prodType={productType}
-                    prodCost={price}
-                    prodDiscountPercentage={discountedPrice}
-                    setProdCategory={handleCategoryChange}
-                    setProdCost={handlePriceChange}
-                    setProdDescription={handleDescriptionChange}
-                    setProdDiscountPercentage={handleDiscountedPriceChange}
-                    setProdName={handleNameChange}
-                    setProdType={handleProductTypeChange}
-                    setFile={handleFileChange}
-                    addProduct={addProductHandler}
-                    error={addProductsError}
-                    />
-                    : selectedMenuItem === "Add Best Selling products" ? 
-                    <ProductPreviewListAdmin products={products} onClick={addBestSellerhandler} />
-                    : selectedMenuItem === "Add New Products" ? 
-                    <ProductPreviewListAdmin products={products} onClick={addNewSellerhandler} />
-                    : selectedMenuItem === "Users" ? 
-                    <UserList users={users}/>
-                    : selectedMenuItem === "Orders" ? 
-                    <Orders/>
-                    :<div></div>}
+                    {
+                        selectedMenuItem === "Show Salons" ? 
+                        <SalonsTable 
+                        salons={dumsalons}
+                        />
+                        : selectedMenuItem === "Add Salon" ? 
+                        <AddSalonSection />
+                        :<div></div>
+                    }
                 </div>
             </div>
         </div>

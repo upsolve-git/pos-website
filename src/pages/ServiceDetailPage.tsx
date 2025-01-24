@@ -4,6 +4,7 @@ import axios from "axios";
 import ActionButton from "../ui/atoms/buttons/ActionButton/ActionButton";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { base_url } from "../constants/routes";
 
 const ServiceDetailPage: React.FC = () => {
   const location = useLocation();
@@ -12,7 +13,7 @@ const ServiceDetailPage: React.FC = () => {
 
   const [selectedStaff, setSelectedStaff] = useState<number | null>(null); // Staff ID
   const [staffList, setStaffList] = useState<
-    { staff_id: number; first_name: string; last_name: string }[]
+    { staff_id: number; name: string }[]
   >([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [bookedAppointments, setBookedAppointments] = useState<
@@ -32,7 +33,7 @@ const ServiceDetailPage: React.FC = () => {
     const fetchStaff = async () => {
       try {
         const response = await axios.get(
-          `https://posapi.canadiangelnails.com/api/customer/available-staff`,
+          base_url+`api/customer/available-staff`,
           { params: { serviceId: service.service_id } }
         );
         setStaffList(response.data);
@@ -52,7 +53,8 @@ const ServiceDetailPage: React.FC = () => {
 
       try {
         const response = await axios.get(
-          `https://posapi.canadiangelnails.com/api/customer/booked-appointments`,
+          base_url+`api/customer/booked-appointments`,
+
           { params: { staffId: selectedStaff } }
         );
         setBookedAppointments(response.data); // { date: "YYYY-MM-DD", time: "HH:mm" }
@@ -77,7 +79,7 @@ const ServiceDetailPage: React.FC = () => {
 
       try {
         const authResponse = await axios.get(
-          "https://posapi.canadiangelnails.com/api/auth/getauth",
+          base_url+"api/auth/isAdmin",
           { withCredentials: true }
         );
         customer_id = authResponse.data.userId;
@@ -91,7 +93,7 @@ const ServiceDetailPage: React.FC = () => {
       const formattedDate = selectedDate.toISOString().split("T")[0];
 
       const response = await axios.post(
-        "https://posapi.canadiangelnails.com/api/customer/book-appointment",
+        base_url+ "api/customer/book-appointment",
         {
           customer_id,
           service_id,
@@ -168,7 +170,7 @@ const ServiceDetailPage: React.FC = () => {
               </option>
               {staffList.map((staff) => (
                 <option key={staff.staff_id} value={staff.staff_id}>
-                  {staff.first_name + " " + staff.last_name}
+                  {staff.name}
                 </option>
               ))}
             </select>

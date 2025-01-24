@@ -10,7 +10,7 @@ import { Color } from "../../interfaces/Color";
 
 
 export const useAdminPage = ()=>{
-    const menuItems = ["Add Products", "Users", "Orders"];
+    const menuItems = ["Add Salon", "Show Salons"];
     let [selectedMenuItem, setSelectedMenuItem] = useState<string>('') 
     let [category, setCategory] = useState<Category>({category_id:1, category_name:""})
     let [name, setName] = useState<string>('')
@@ -28,11 +28,6 @@ export const useAdminPage = ()=>{
     let [users, setUsers] = useState<User[]>([])
     const [colors, setColors] = useState<Color[]>([]);
 
-    useEffect(() => {
-        getCategories();
-        getProducts();
-        getUsers();
-    }, [])
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFiles = e.target.files;

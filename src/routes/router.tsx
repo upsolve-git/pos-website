@@ -10,11 +10,6 @@ import LandingPage from "../pages/LandingPage";
 import SignInPage from "../pages/auth/SignInPage";
 import SignUpPage from "../pages/auth/SignUpPage";
 import AdminPage from "../pages/admin/AdminPage";
-import ProductsPage from "../pages/ProductsPage";
-import ProductDetailPage from "../pages/ProductDetailPage";
-import Cart from "../pages/CartPage";
-import OrderHistoryPage from "../pages/OrderHistoryPage";
-import OrderSuccessPage from "../pages/OrderSuccessPage";
 // import UserProfilePage from "../pages/user/UserProfilePage";
 import ErrorPage from "../pages/ErrorPage";
 import AdminSignInPage from "../pages/auth/AdminSignInPage";
@@ -23,6 +18,7 @@ import ServiceDetailPage from "../pages/ServiceDetailPage";
 import { getAuth } from "../services/auth";
 import AppointmentHistoryPage from "../pages/AppointmentHistoryPage";
 import AppointmentDetailPage from "../pages/AppointmentDetailPage";
+import ProfilePage from "../pages/ProfilePage";
 
 const authLoader = async () => {
     console.log('auth redirect');
@@ -73,6 +69,10 @@ const router = createBrowserRouter([
                 path: "/appointmentDetail/:id",
                 element: <AppointmentDetailPage />
             },
+            {
+                path: "profile",
+                element: <ProfilePage />
+            }
             // {
             //     path: "ordersuccess/:id",
             //     element: <OrderSuccessPage />
@@ -106,6 +106,16 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: 'admin',
+        element: <DefaultLayout />,
+        children: [
+            {
+                path: 'home',
+                element: <AdminPage /> 
+            }
+        ]
+    }
 ]);
 
 export default router
