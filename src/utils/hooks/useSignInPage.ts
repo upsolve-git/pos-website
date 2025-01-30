@@ -55,20 +55,19 @@ export const useSignInPage = ()=>{
     const loginHandler = async()=>{
         console.log(accType);
         
-            console.log('log in');
-            
-            await loginReq(email, password)
-            .then(res=>{
-                console.log("inside signin success", res)
-                setLoginErr('')
-                navigate(HOME_PAGE)
-            })
-            .catch(err=>{
-                console.log(err)
-                setLoginErr("Error occured, Please try again")
-            })
+        console.log('log in');
+        
+        await loginReq(email, password)
+        .then(res=>{
+            console.log("inside signin success", res)
+            setLoginErr('')
+            navigate(HOME_PAGE)
+        })
+        .catch(err=>{
+            console.log(err)
+            setLoginErr("Error occured, Please try again")
+        })
 
-        // }
     }  
 
     const googleAuthHandler = async(user:any) => {

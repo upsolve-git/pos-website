@@ -1,5 +1,6 @@
 import axios from "axios";
 import { BOOK_APPOINT_ENDPOINT, GET_AUTH_REQ } from "../constants/routes";
+import { getAuthCustomerId } from "./user";
 
 interface BookAppointmentParams {
   customerId: number;
@@ -30,11 +31,11 @@ export const bookAppointment = async ({
   return response; // Return the response for handling in the component
 };
 
-export const getAuthCustomerId = async () => {
-  const authResponse = await axios.get(
-    GET_AUTH_REQ,
-    { withCredentials: true }
-  );
+// export const getAuthCustomerId = async () => {
+//   const authResponse = await axios.get(
+//     GET_AUTH_REQ,
+//     { withCredentials: true }
+//   );
 
-  return authResponse.data.userId; // Return the userId
-};
+//   return authResponse.data.userId; // Return the userId
+// };
