@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { getUserDetails } from "../../services/user";
+import { setUserDetails } from "../../services/user";
+
+import { User } from "../../interfaces/User";
 
 const useProfileForm = (initialProfile: Record<string, any>) => {
 
@@ -10,9 +12,17 @@ const useProfileForm = (initialProfile: Record<string, any>) => {
     setPreviousProfile(profile);
   };
 
-  const saveProfile = (updatedProfile: Record<string, any>) => {
-    console.log("Profile to save:", updatedProfile); 
-    setProfile(updatedProfile);
+  const saveProfile = async (updatedProfile: User) => {
+    console.log("Profile to save:", updatedProfile);
+
+    const response = await setUserDetails(updatedProfile);
+    
+    if (response) {
+        console.log("Profile updated successfully on server");
+        setProfile(updatedProfile);
+    } else {
+        console.error("Failed to update profile on server");
+    }
   };
 
   const cancelEditing = () => {

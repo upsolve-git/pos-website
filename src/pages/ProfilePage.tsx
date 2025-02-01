@@ -20,7 +20,7 @@ const ProfilePage: React.FC = () => {
   }, []);
 
   if (!profile) {
-    return <p>Loading...</p>; // Handle loading state
+    return <p>Loading...</p>; 
   }
 
   const handleSave = () => {
