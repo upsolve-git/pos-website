@@ -21,7 +21,7 @@ const LandingPage: React.FC<LandingPageProps> = () => {
       className="mx-auto tablet:w-[70%] text-sm tablet:text-md desktop:text-lg">
         <p
         className="font-bold text-primary text-lg font-lexend desktop:text-2xl">
-            Salons
+            Salon Partners
         </p>
         <SalonsSection />
           {/* <FormControl fullWidth>
