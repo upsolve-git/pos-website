@@ -4,15 +4,16 @@ import { Service } from "../../../interfaces/Service";
 
 interface ServiceCardProps {
   service: Service;
+  salonId : String;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ service, salonId }) => {
   const navigate = useNavigate();
-
+  console.log(salonId,"in test 1");
   return (
     <div 
       className="bg-white shadow-lg border border-gray-300 rounded-lg p-6 font-montserrat transition-transform transform hover:scale-105 hover:shadow-2xl hover:cursor-pointer"
-      onClick={() => navigate(`/serviceDetail/${service.id}`, { state: { service } })} // Example URL
+      onClick={() => navigate(`/serviceDetail/${service.id}`, { state: { service, salonId } })} // Example URL
     >
       {/* Service Name */}
       <p className="text-primary font-bold text-xl mb-2">{service.name}</p>

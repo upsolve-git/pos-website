@@ -37,8 +37,8 @@ export const GET_ORDER = '/order/'
 export const LANDING_PAGE = '/landingpage'
 
 
-export const base_url = 'http://localhost:5000/'
-// export const base_url = 'https://posapi.canadiangelnails.com/'
+// export const base_url = 'http://localhost:5000/'
+export const base_url = 'https://posapi.canadiangelnails.com/'
 
 export const GET_AUTH_REQ = base_url+'api/auth/isAdmin'
 export const AVAIL_STAFF_ENDPOINT = base_url+'api/customer/available-staff'

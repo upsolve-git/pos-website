@@ -9,8 +9,8 @@ import { base_url } from "../constants/routes";
 const ServiceDetailPage: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { service } = location.state; // Access the service passed through state
-
+  const { service, salonId } = location.state; // Access the service passed through state
+  console.log(salonId,"in test")
   const [selectedStaff, setSelectedStaff] = useState<number | null>(null); // Staff ID
   const [staffList, setStaffList] = useState<
     { staff_id: number; name: string }[]
@@ -34,7 +34,7 @@ const ServiceDetailPage: React.FC = () => {
       try {
         const response = await axios.get(
           base_url+`api/customer/available-staff`,
-          { params: { serviceId: service.service_id } }
+          { params: { serviceId: service.service_id, salonId : salonId } }
         );
         setStaffList(response.data);
       } catch (error) {

@@ -1,25 +1,21 @@
 import React from 'react';
 
 interface WalletCardProps {
-    balance: number,
+    balance: number;
 }
 
-const WalletCard: React.FC<WalletCardProps> = ({
-    balance
-}) => {
-  return (
-    <div
-    className='bg-white mx-auto border-secondarydark border-[0.1rem] rounded-lg py-6 text-center tablet:max-w-[70%] desktop:max-w-[60%]'>
-        <p
-        className='font-medium text-sm tablet:text-md desktop:text-xl'>
-            Remaining Balance
-        </p>
-        <p
-        className='font-medium text-2xl tablet:text-3xl desktop:text-5xl'>
-            {balance}
-        </p>
-    </div>
-  );
+const WalletCard: React.FC<WalletCardProps> = ({ balance }) => {
+    return (
+        <div className="bg-white mx-auto border border-secondarydark border-[0.1rem] rounded-2xl py-8 px-6 text-center shadow-md 
+                        tablet:max-w-[70%] desktop:max-w-[60%] transition-transform transform hover:scale-105">
+            <p className="font-semibold text-gray-700 text-md tablet:text-lg desktop:text-2xl">
+                Remaining Balance
+            </p>
+            <p className="font-bold text-gray-900 text-4xl tablet:text-5xl desktop:text-6xl my-2">
+                ₹{balance.toLocaleString()}
+            </p>
+        </div>
+    );
 };
 
 export default WalletCard;

@@ -40,7 +40,7 @@ const SmallNavbar: React.FC<SmallNavbarProps> = () => {
                 {menuOpen && (
                     <ul className="absolute right-0 top-full mt-2 bg-white shadow-lg p-2 text-xs z-50">
                         <li className="py-1 px-2 "><a href="/">Home</a></li>
-                        <li className="py-1 px-2 "><a href="/wallet">Wallet</a></li>
+                        { isAuthenticated && <li className="py-1 px-2 "><a href="/wallet">Wallet</a></li>}
                         {/* <li className="py-1 px-2 ">About</li>
                         <li className="py-1 px-2 "><a href="/products">Products</a></li>
                         <li className="py-1 px-2 ">Contact</li> */}

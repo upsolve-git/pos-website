@@ -1,13 +1,14 @@
 import React from 'react';
 import { dumsalons } from '../constants/dumySalons';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import ServicesSection from '../ui/sections/ServicesSection/ServicesSection';
 
 interface SalonDetailPageProps {}
 
 const SalonDetailPage: React.FC<SalonDetailPageProps> = () => {
-    let { id } = useParams()
-    const salon = dumsalons.find(salon=>salon.salonId==Number(id))
+    const location = useLocation();
+    const { salon } = location.state;
+    console.log(salon)
 
   return (
     <div
@@ -16,7 +17,7 @@ const SalonDetailPage: React.FC<SalonDetailPageProps> = () => {
         className="font-bold text-primary text-lg font-lexend desktop:text-2xl">
             {salon?.salonName}
         </p>
-        <div
+        {/* <div
         className='grid grid-cols-1 gap-7 my-4 tablet:my-9 tablet:grid-cols-2'>
             <img src={salon?.image} alt="salon.png" 
             className='w-40 mx-auto tablet:w-56 desktop:w-72'/>
@@ -28,13 +29,13 @@ const SalonDetailPage: React.FC<SalonDetailPageProps> = () => {
                     {salon?.location}
                 </span>
             </p>
-        </div>
+        </div> */}
         
         <p
         className="font-semibold text-md font-lexend desktop:text-xl">
             Available Services
         </p>
-        <ServicesSection />
+        <ServicesSection salonId={salon?.salonId}/>
     </div>
   );
 };

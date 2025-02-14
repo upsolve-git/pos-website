@@ -14,9 +14,30 @@ const AdminPage: React.FC<AdminPageProps> = ()=>{
     const navigate = useNavigate();
 
     let [adminAuth, setAdminAuth] = useState<boolean>(false); 
+    let [salons, setSalons] = useState([])  
 
     useEffect(() => {
-
+        const getSalons = async() => {
+            try {
+                const salons = await axios.get(
+                    base_url + "api/admin/get-all-salons",
+                    { withCredentials: true }
+                ); 
+                console.log(salons.data.salons);
+                const transformedSalons = salons.data.salons.map((salon:any) => ({
+                    salonName: salon.salon_name,
+                    ownerName: salon.owner_name,
+                    contactEmail: salon.contact_email,
+                    contactMobile: salon.contact_mobile,
+                    bankAccount: salon.bank_account,
+                    numberOfSystems: salon.number_of_systems,
+                    pricePerSystem: parseFloat(salon.price_per_system), // Convert string to number
+                  }));
+                setSalons(transformedSalons);
+            } catch (error) {
+                console.error("Error fetching salons:", error);
+            }
+        };
         
         const getAuth = async() => {
             try {
@@ -40,8 +61,9 @@ const AdminPage: React.FC<AdminPageProps> = ()=>{
                 return;
               }
         } 
-        getAuth()
-    })
+        getAuth();
+        getSalons();
+    }, [])
 
     let {
         menuItems,
@@ -66,7 +88,7 @@ const AdminPage: React.FC<AdminPageProps> = ()=>{
                     {
                         selectedMenuItem === "Show Salons" ? 
                         <SalonsTable 
-                        salons={dumsalons}
+                        salons={salons}
                         />
                         : selectedMenuItem === "Add Salon" ? 
                         <AddSalonSection />

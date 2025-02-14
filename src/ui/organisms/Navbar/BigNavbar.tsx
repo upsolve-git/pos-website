@@ -20,7 +20,7 @@ const BigNavbar: React.FC<BigNavbarProps> = ()=>{
             <ul
     className="text-xxs flex items-center justify-end text-primary space-x-4 desktop:text-sm">
     <li><a href="/">Home</a></li>
-    <li><a href="/wallet">Wallet</a></li>
+    {isAuthenticated && (<li><a href="/wallet">Wallet</a></li>)}
     {isAuthenticated && (
         <li>
             <a href="/appointments">Appointments</a>
