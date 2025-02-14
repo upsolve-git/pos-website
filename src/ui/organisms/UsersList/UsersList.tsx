@@ -18,10 +18,10 @@ const UserList: React.FC<UserListProps>= ({
   className="ag-theme-quartz" // applying the Data Grid theme
   style={{ height: 500 }} // the Data Grid will fill the size of the parent container
  >
-   <AgGridReact
+   {/* <AgGridReact
        rowData={users}
        columnDefs={[{field:'email'}, {field:'account_type'}, {field:'first_name'}, {field:'last_name'}, {field:'country_code'}, {field:'phone'}]}
-   />
+   /> */}
  </div>
     )
 }

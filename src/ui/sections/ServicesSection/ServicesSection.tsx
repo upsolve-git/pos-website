@@ -4,7 +4,7 @@ import ServiceCard from "../../organisms/ServiceCard/ServiceCard";
 import { Service } from "../../../interfaces/Service";
 import { base_url } from "../../../constants/routes";
 
-const ServicesGrid = () => {
+const ServicesSection = () => {
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -42,4 +42,4 @@ const ServicesGrid = () => {
   );
 };
 
-export default ServicesGrid;
+export default ServicesSection;

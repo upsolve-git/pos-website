@@ -156,24 +156,24 @@ export const useAdminPage = ()=>{
         }) 
     } 
 
-    const getUsers = async() => {
-        await getUsersReq()
-        .then(res => {
-            console.log(res.data)
-            res.data.map((user: User) => (console.log("country id", user.country_code)))
-            const formattedUsers = res.data.map((user: User) => ({
-                email: user.email || '', 
-                account_type: user.account_type || '',
-                first_name: user.first_name || '',
-                last_name: user.last_name || '',
-                country_code: user.country_code || '',
-                phone: user.phone || ''
-            }));
-            setUsers(formattedUsers);
-        }).catch(err => {
-            console.log(err)
-        }) 
-    } 
+    // const getUsers = async() => {
+    //     await getUsersReq()
+    //     .then(res => {
+    //         console.log(res.data)
+    //         res.data.map((user: User) => (console.log("country id", user.country_code)))
+    //         const formattedUsers = res.data.map((user: User) => ({
+    //             email: user.email || '', 
+    //             account_type: user.account_type || '',
+    //             first_name: user.first_name || '',
+    //             last_name: user.last_name || '',
+    //             country_code: user.country_code || '',
+    //             phone: user.phone || ''
+    //         }));
+    //         setUsers(formattedUsers);
+    //     }).catch(err => {
+    //         console.log(err)
+    //     }) 
+    // } 
     
     return {menuItems, products, users,
         selectedMenuItem, handleSelectedMenuItemChange, handleFileChange, addProductsError, handleDiscountedBusinessPriceChange,

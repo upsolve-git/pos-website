@@ -19,7 +19,10 @@ const SmallNavbar: React.FC<SmallNavbarProps> = () => {
 
     return (
         <div className="p-2 flex justify-between items-center">
-            <Logo styles="w-12 h-12" fill="#C26F2D" />
+            <div>
+                
+            </div>
+            {/* <Logo styles="w-12 h-12" fill="#C26F2D" /> */}
             <div className="relative">
                 <div onClick={toggleMenu} className="cursor-pointer">
                     <svg
@@ -37,6 +40,7 @@ const SmallNavbar: React.FC<SmallNavbarProps> = () => {
                 {menuOpen && (
                     <ul className="absolute right-0 top-full mt-2 bg-white shadow-lg p-2 text-xs z-50">
                         <li className="py-1 px-2 "><a href="/">Home</a></li>
+                        <li className="py-1 px-2 "><a href="/wallet">Wallet</a></li>
                         {/* <li className="py-1 px-2 ">About</li>
                         <li className="py-1 px-2 "><a href="/products">Products</a></li>
                         <li className="py-1 px-2 ">Contact</li> */}

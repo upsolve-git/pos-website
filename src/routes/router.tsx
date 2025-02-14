@@ -19,6 +19,8 @@ import { getAuth } from "../services/auth";
 import AppointmentHistoryPage from "../pages/AppointmentHistoryPage";
 import AppointmentDetailPage from "../pages/AppointmentDetailPage";
 import ProfilePage from "../pages/ProfilePage";
+import SalonDetailPage from "../pages/SalonDetailPage";
+import WalletPage from "../pages/WalletPage";
 
 const authLoader = async () => {
     console.log('auth redirect');
@@ -52,10 +54,10 @@ const router = createBrowserRouter([
             //     path: "products",
             //     element: <ProductsPage />
             // },
-            // {
-            //     path: "productDetail/:id",
-            //     element: <ProductDetailPage />
-            // },
+            {
+                path: "salonDetail/:id",
+                element: <SalonDetailPage />
+            },
             // {
             //     path: "cart",
             //     element: <Cart />,
@@ -72,6 +74,10 @@ const router = createBrowserRouter([
             {
                 path: "profile",
                 element: <ProfilePage />
+            },
+            {
+                path: 'wallet',
+                element: <WalletPage />
             }
             // {
             //     path: "ordersuccess/:id",
@@ -103,6 +109,9 @@ const router = createBrowserRouter([
             {
                 path: 'admin',
                 element: <AdminSignInPage />
+            },
+            {
+                path: 'salonDetail/:id'
             }
         ]
     },

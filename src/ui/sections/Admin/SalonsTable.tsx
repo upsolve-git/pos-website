@@ -3,6 +3,8 @@ import { AgGridReact } from "ag-grid-react"; // React Data Grid Component
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the Data Grid
 import "ag-grid-community/styles/ag-theme-alpine.css";
 
+import { Salon } from "../../../interfaces/Salon";
+
 interface SalonInfo {
   salonName: string;
   ownerName: string;
@@ -14,7 +16,7 @@ interface SalonInfo {
 }
 
 interface SalonsTableProps {
-  salons: SalonInfo[];
+  salons: Salon[];
 }
 
 const SalonsTable: React.FC<SalonsTableProps> = ({ salons }) => {
