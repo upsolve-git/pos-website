@@ -6,6 +6,7 @@ export const useAddSalonForm = () => {
   const [salonName, setSalonName] = useState<string>("");
   const [ownerName, setOwnerName] = useState<string>("");
   const [contactEmail, setContactEmail] = useState<string>("");
+  const [referralEmail, setReferralEmail] = useState<string>("");
   const [contactMobile, setContactMobile] = useState<string>("");
   const [bankAccount, setBankAccount] = useState<string>("");
   const [numberOfSystems, setNumberOfSystems] = useState<number>(0);
@@ -34,6 +35,7 @@ export const useAddSalonForm = () => {
       salon_name: salonName,  // sending the data in snake_case
       owner_name: ownerName,  // sending the data in snake_case
       contact_email: contactEmail,  // sending the data in snake_case
+      referal_mail: referralEmail,
       contact_mobile: contactMobile,  // sending the data in snake_case
       bank_account: bankAccount,  // sending the data in snake_case
       number_of_systems: numberOfSystems,  // sending the data in snake_case
@@ -60,6 +62,8 @@ export const useAddSalonForm = () => {
     setOwnerName,
     contactEmail,
     setContactEmail,
+    referralEmail,
+    setReferralEmail,
     contactMobile,
     setContactMobile,
     bankAccount,

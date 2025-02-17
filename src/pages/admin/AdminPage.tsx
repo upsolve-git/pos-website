@@ -8,6 +8,11 @@ import { getAdminAuth } from "../../services/login";
 import axios from "axios";
 import { base_url } from "../../constants/routes";
 import { useNavigate } from "react-router-dom";
+import AddSalesAgentSection from "../../ui/sections/AddSalesAgentSection/AddSalesAgentSection";
+import ViewCustomersSection from "../../ui/sections/Admin/ViewCustomersSection";
+
+import { CustomerInfo } from "../../interfaces/CustomerInfo";
+
 interface AdminPageProps{}
 
 const AdminPage: React.FC<AdminPageProps> = ()=>{
@@ -15,6 +20,7 @@ const AdminPage: React.FC<AdminPageProps> = ()=>{
 
     let [adminAuth, setAdminAuth] = useState<boolean>(false); 
     let [salons, setSalons] = useState([])  
+    let [customers, setCustomers] = useState<CustomerInfo[]>([]);
 
     useEffect(() => {
         const getSalons = async() => {
@@ -61,8 +67,28 @@ const AdminPage: React.FC<AdminPageProps> = ()=>{
                 return;
               }
         } 
+        const getCustomers = async () => {
+            try {
+              const response = await axios.get(base_url + "api/admin/get-customers", {
+                withCredentials: true,
+              });
+          
+              console.log(response.data);
+
+              const transformedCustomers = response.data.map((customer: any) => ({
+                fullName: customer.name,
+                email: customer.email,
+                phoneNumber: customer.phone_number,
+              }));
+          
+              setCustomers(transformedCustomers);
+            } catch (error) {
+              console.error("Error fetching customers:", error);
+            }
+          };          
         getAuth();
         getSalons();
+        getCustomers();
     }, [])
 
     let {
@@ -92,6 +118,10 @@ const AdminPage: React.FC<AdminPageProps> = ()=>{
                         />
                         : selectedMenuItem === "Add Salon" ? 
                         <AddSalonSection />
+                        :selectedMenuItem == "Add Sales Agent"?
+                        <AddSalesAgentSection />
+                        :selectedMenuItem === "View Customers"?
+                        <ViewCustomersSection customers={customers} />
                         :<div></div>
                     }
                 </div>

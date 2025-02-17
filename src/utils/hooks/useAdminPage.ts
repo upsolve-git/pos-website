@@ -10,7 +10,7 @@ import { Color } from "../../interfaces/Color";
 
 
 export const useAdminPage = ()=>{
-    const menuItems = ["Add Salon", "Show Salons"];
+    const menuItems = ["Add Salon", "Show Salons", "Add Sales Agent", "View Customers"];
     let [selectedMenuItem, setSelectedMenuItem] = useState<string>('') 
     let [category, setCategory] = useState<Category>({category_id:1, category_name:""})
     let [name, setName] = useState<string>('')

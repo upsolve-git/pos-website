@@ -1,36 +1,34 @@
 import React from "react";
-import { useAddSalonForm } from "../../../utils/hooks/useAddSalon";
+
 import TextInput from "../../atoms/formElements/textInput/textInput";
-import NumberInput from "../../atoms/formElements/NumberInput/NumberInput";
 import ActionButton from "../../atoms/buttons/ActionButton/ActionButton";
 
-interface AddSalonSectionProps {}
+import { useAddSalesAgentForm } from "../../../utils/hooks/useAddSalesAgent";
+import NumberInput from "../../atoms/formElements/NumberInput/NumberInput";
 
-export const AddSalonSection: React.FC<AddSalonSectionProps> = () => {
+interface AddSalesAgentSectionProps {}
+
+const AddSalesAgentSection: React.FC<AddSalesAgentSectionProps> = () => {
   const {
-    salonName,
-    setSalonName,
-    ownerName,
-    setOwnerName,
+    agentFirstName,
+    setAgentFirstName,
+    agentLastName,
+    setAgentLastName,
     contactEmail,
     setContactEmail,
-    referralEmail,
-    setReferralEmail,
     contactMobile,
     setContactMobile,
     bankAccount,
     setBankAccount,
-    numberOfSystems,
-    setNumberOfSystems,
-    pricePerSystem,
-    setPricePerSystem,
+    commission,
+    setCommission,
     password,
     setPassword,
     confirmPassword,
     setConfirmPassword,
     error,
-    handleAddSalon,
-  } = useAddSalonForm();
+    handleAddSalesAgent,
+  } = useAddSalesAgentForm();
 
   return (
     <div className="flex justify-evenly pb-6 tablet:pb-0">
@@ -38,24 +36,19 @@ export const AddSalonSection: React.FC<AddSalonSectionProps> = () => {
         <table className="table-auto text-md border-separate border-spacing-4">
           <tbody>
             <TextInput
-              value={salonName}
-              label="Salon Name"
-              onChange={(e) => setSalonName(e.target.value)}
+              value={agentFirstName}
+              label="First Name"
+              onChange={(e) => setAgentFirstName(e.target.value)}
             />
             <TextInput
-              value={ownerName}
-              label="Owner Name"
-              onChange={(e) => setOwnerName(e.target.value)}
+              value={agentLastName}
+              label="Last Name"
+              onChange={(e) => setAgentLastName(e.target.value)}
             />
             <TextInput
               value={contactEmail}
-              label="Contact Email"
+              label="Agent Email"
               onChange={(e) => setContactEmail(e.target.value)}
-            />
-            <TextInput
-              value={referralEmail}
-              label="Referral Email"
-              onChange={(e) => setReferralEmail(e.target.value)}
             />
             <TextInput
               value={contactMobile}
@@ -68,14 +61,9 @@ export const AddSalonSection: React.FC<AddSalonSectionProps> = () => {
               onChange={(e) => setBankAccount(e.target.value)}
             />
             <NumberInput
-              value={numberOfSystems ?? 0}
-              label="Number of Systems"
-              callbackFunc={(e) => setNumberOfSystems(Number(e.target.value))}
-            />
-            <NumberInput
-              value={pricePerSystem ?? 0}
-              label="Price per System"
-              callbackFunc={(e) => setPricePerSystem(Number(e.target.value))}
+              value={commission}
+              label="Commission (%)"
+              callbackFunc={(e) => setCommission(Number(e.target.value))}
             />
             <TextInput
               value={password}
@@ -90,10 +78,7 @@ export const AddSalonSection: React.FC<AddSalonSectionProps> = () => {
           </tbody>
         </table>
         <div className="w-[60%]">
-          <ActionButton 
-          label="Add Salon"
-          callbackFunc={handleAddSalon}
-          />
+          <ActionButton label="Add Agent" callbackFunc={handleAddSalesAgent} />
         </div>
         <p>
           {error === "false" && (
@@ -107,3 +92,5 @@ export const AddSalonSection: React.FC<AddSalonSectionProps> = () => {
     </div>
   );
 };
+
+export default AddSalesAgentSection;
