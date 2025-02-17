@@ -73,13 +73,12 @@ const AdminPage: React.FC<AdminPageProps> = ()=>{
                 withCredentials: true,
               });
           
-              console.log(response.data.customers);
-          
-              // Transform backend data
-              const transformedCustomers = response.data.customers.map((customer: any) => ({
-                fullName: customer.name, // Backend provides only `name`, store it as `fullName`
+              console.log(response.data);
+
+              const transformedCustomers = response.data.map((customer: any) => ({
+                fullName: customer.name,
                 email: customer.email,
-                phoneNumber: customer.phone_number, // Mapping phone_number → phoneNumber
+                phoneNumber: customer.phone_number,
               }));
           
               setCustomers(transformedCustomers);
