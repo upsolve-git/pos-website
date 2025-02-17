@@ -4,14 +4,14 @@ import { SIGNUP_ENDPOINT } from "../constants/routes";
 export const signupReq = async (
     email: string | undefined,
     password: string | undefined,
-    accType: string | undefined,
+    // accType: string | undefined,
     firstName: string | undefined,
     lastName: string | undefined,
     phone: string | undefined,
     countryCode: string | undefined,
-    referralEmail?: string
+    referralEmail: string
 ) => {
-    if (email && password && accType && firstName && lastName && phone && countryCode) {
+    if (email && password && firstName && lastName && phone && countryCode) {
         const requestBody: any = {
             "email": email,
             "password": password,
