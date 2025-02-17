@@ -12,8 +12,7 @@ interface ViewCustomersSectionProps {
 
 const ViewCustomersSection: React.FC<ViewCustomersSectionProps> = ({ customers }) => {
   const columnDefs = [
-    { field: "firstName" as keyof CustomerInfo, headerName: "First Name", sortable: true, filter: true },
-    { field: "lastName" as keyof CustomerInfo, headerName: "Last Name", sortable: true, filter: true },
+    { field: "fullName" as keyof CustomerInfo, headerName: "Full Name", sortable: true, filter: true },
     { field: "email" as keyof CustomerInfo, headerName: "Email", sortable: true, filter: true },
     { field: "phoneNumber" as keyof CustomerInfo, headerName: "Phone Number", sortable: true, filter: true },
   ];

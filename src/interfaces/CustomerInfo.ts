@@ -1,6 +1,6 @@
 export interface CustomerInfo {
-    firstName: string;
-    lastName: string;
+    fullName: string; // Instead of firstName + lastName
     email: string;
     phoneNumber: string;
-}
+  }
+  

@@ -69,22 +69,24 @@ const AdminPage: React.FC<AdminPageProps> = ()=>{
         } 
         const getCustomers = async () => {
             try {
-                const response = await axios.get(
-                    base_url + "api/admin/get-customers",
-                    { withCredentials: true }
-                );
-                console.log(response.data.customers);
-                const transformedCustomers = response.data.customers.map((customer: any) => ({
-                    firstName: customer.first_name,
-                    lastName: customer.last_name,
-                    email: customer.email,
-                    phoneNumber: customer.phone_number,
-                }));
-                setCustomers(transformedCustomers);
+              const response = await axios.get(base_url + "api/admin/get-customers", {
+                withCredentials: true,
+              });
+          
+              console.log(response.data.customers);
+          
+              // Transform backend data
+              const transformedCustomers = response.data.customers.map((customer: any) => ({
+                fullName: customer.name, // Backend provides only `name`, store it as `fullName`
+                email: customer.email,
+                phoneNumber: customer.phone_number, // Mapping phone_number → phoneNumber
+              }));
+          
+              setCustomers(transformedCustomers);
             } catch (error) {
-                console.error("Error fetching customers:", error);
+              console.error("Error fetching customers:", error);
             }
-        };
+          };          
         getAuth();
         getSalons();
         getCustomers();
