@@ -3,16 +3,17 @@ import React from "react";
 interface EmailInputProps{
     value: string,
     error: string,
+    label?: string,
     onChange: (e: React.ChangeEvent<HTMLInputElement>)=>void
 }
 
-const EmailInput: React.FC<EmailInputProps> = ({value, error, onChange}) => {
+const EmailInput: React.FC<EmailInputProps> = ({value, error, label, onChange}) => {
     return (
         <div
         className="w-full h-fit my-2">
             <label htmlFor="login-email"
             className="text-darkgray block text-xxs tablet:text-xs desktop:text-sm">
-                Email address
+                {label?label:"Email address"}
             </label>
             <input name="login-email" type="email" value={value}
              onChange={onChange}
