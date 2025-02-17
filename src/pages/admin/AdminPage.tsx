@@ -8,6 +8,7 @@ import { getAdminAuth } from "../../services/login";
 import axios from "axios";
 import { base_url } from "../../constants/routes";
 import { useNavigate } from "react-router-dom";
+import AddSalesAgentSection from "../../ui/sections/AddSalesAgentSection/AddSalesAgentSection";
 interface AdminPageProps{}
 
 const AdminPage: React.FC<AdminPageProps> = ()=>{
@@ -92,6 +93,8 @@ const AdminPage: React.FC<AdminPageProps> = ()=>{
                         />
                         : selectedMenuItem === "Add Salon" ? 
                         <AddSalonSection />
+                        :selectedMenuItem == "Add Sales Agent"?
+                        <AddSalesAgentSection />
                         :<div></div>
                     }
                 </div>
