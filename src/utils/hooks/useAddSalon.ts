@@ -35,7 +35,7 @@ export const useAddSalonForm = () => {
       salon_name: salonName,  // sending the data in snake_case
       owner_name: ownerName,  // sending the data in snake_case
       contact_email: contactEmail,  // sending the data in snake_case
-      referral_email: referralEmail,
+      referal_mail: referralEmail,
       contact_mobile: contactMobile,  // sending the data in snake_case
       bank_account: bankAccount,  // sending the data in snake_case
       number_of_systems: numberOfSystems,  // sending the data in snake_case

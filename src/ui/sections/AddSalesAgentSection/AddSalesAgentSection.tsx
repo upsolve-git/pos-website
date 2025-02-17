@@ -4,19 +4,24 @@ import TextInput from "../../atoms/formElements/textInput/textInput";
 import ActionButton from "../../atoms/buttons/ActionButton/ActionButton";
 
 import { useAddSalesAgentForm } from "../../../utils/hooks/useAddSalesAgent";
+import NumberInput from "../../atoms/formElements/NumberInput/NumberInput";
 
 interface AddSalesAgentSectionProps {}
 
 const AddSalesAgentSection: React.FC<AddSalesAgentSectionProps> = () => {
   const {
-    agentName,
-    setAgentName,
+    agentFirstName,
+    setAgentFirstName,
+    agentLastName,
+    setAgentLastName,
     contactEmail,
     setContactEmail,
     contactMobile,
     setContactMobile,
     bankAccount,
     setBankAccount,
+    commission,
+    setCommission,
     password,
     setPassword,
     confirmPassword,
@@ -31,9 +36,14 @@ const AddSalesAgentSection: React.FC<AddSalesAgentSectionProps> = () => {
         <table className="table-auto text-md border-separate border-spacing-4">
           <tbody>
             <TextInput
-              value={agentName}
-              label="Agent Name"
-              onChange={(e) => setAgentName(e.target.value)}
+              value={agentFirstName}
+              label="First Name"
+              onChange={(e) => setAgentFirstName(e.target.value)}
+            />
+            <TextInput
+              value={agentLastName}
+              label="Last Name"
+              onChange={(e) => setAgentLastName(e.target.value)}
             />
             <TextInput
               value={contactEmail}
@@ -49,6 +59,11 @@ const AddSalesAgentSection: React.FC<AddSalesAgentSectionProps> = () => {
               value={bankAccount}
               label="Bank Account"
               onChange={(e) => setBankAccount(e.target.value)}
+            />
+            <NumberInput
+              value={commission}
+              label="Commission (%)"
+              callbackFunc={(e) => setCommission(Number(e.target.value))}
             />
             <TextInput
               value={password}

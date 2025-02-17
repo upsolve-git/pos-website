@@ -3,10 +3,12 @@ import { useState } from "react";
 import { base_url } from "../../constants/routes";
 
 export const useAddSalesAgentForm = () => {
-  const [agentName, setAgentName] = useState<string>("");
+  const [agentFirstName, setAgentFirstName] = useState<string>("");
+  const [agentLastName, setAgentLastName] = useState<string>("");
   const [contactEmail, setContactEmail] = useState<string>("");
   const [contactMobile, setContactMobile] = useState<string>("");
   const [bankAccount, setBankAccount] = useState<string>("");
+  const [commission, setCommission] = useState<number>(0);
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
@@ -18,19 +20,23 @@ export const useAddSalesAgentForm = () => {
     }
 
     console.log({
-      agentName,
+      agentFirstName,
+      agentLastName,
       contactEmail,
       contactMobile,
       bankAccount,
+      commission,
       password,
     });
 
     const agentData = {
-      agent_name: agentName,  // sending the data in snake_case
-      contact_email: contactEmail,  // sending the data in snake_case
-      contact_mobile: contactMobile,  // sending the data in snake_case
-      bank_account: bankAccount,  // sending the data in snake_case
-      password,  // password remains the same
+      first_name: agentFirstName,
+      last_name: agentLastName,
+      email: contactEmail,
+      phone_number: contactMobile,
+      bank_account: bankAccount,
+      commision: commission,
+      password: password,
     };
 
     try {
@@ -44,14 +50,18 @@ export const useAddSalesAgentForm = () => {
   };
 
   return {
-    agentName,
-    setAgentName,
+    agentFirstName,
+    setAgentFirstName,
+    agentLastName,
+    setAgentLastName,
     contactEmail,
     setContactEmail,
     contactMobile,
     setContactMobile,
     bankAccount,
     setBankAccount,
+    commission,
+    setCommission,
     password,
     setPassword,
     confirmPassword,
