@@ -1,24 +1,27 @@
 import axios from "../helpers/axios";
-
 import { SIGNUP_ENDPOINT } from "../constants/routes";
 
 export const signupReq = async (
-    email: string|undefined, 
-    password:string|undefined, 
-    accType:string|undefined, 
-    firstName:string|undefined, 
-    lastName:string|undefined, 
-    phone:string|undefined, 
-    countryCode:string|undefined)=>{
-    if(email && password && accType && firstName && lastName && phone && countryCode){
-        let promise = axios.post(SIGNUP_ENDPOINT, {
+    email: string | undefined,
+    password: string | undefined,
+    accType: string | undefined,
+    firstName: string | undefined,
+    lastName: string | undefined,
+    phone: string | undefined,
+    countryCode: string | undefined,
+    referralEmail?: string
+) => {
+    if (email && password && accType && firstName && lastName && phone && countryCode) {
+        const requestBody: any = {
             "email": email,
             "password": password,
-            "first_name":firstName,
-            "last_name":lastName,
-            "phone_number":phone,
-            "role":"user",
-        }); 
-        return promise
-    } 
-}
+            "first_name": firstName,
+            "last_name": lastName,
+            "phone_number": phone,
+            "referal_mail": referralEmail,
+            "role": "user",
+        };
+
+        return axios.post(SIGNUP_ENDPOINT, requestBody);
+    }
+};
