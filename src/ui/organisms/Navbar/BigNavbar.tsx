@@ -26,6 +26,11 @@ const BigNavbar: React.FC<BigNavbarProps> = ()=>{
             <a href="/appointments">Appointments</a>
         </li>
     )}
+     {isAuthenticated && (
+        <li>
+            <a href="/cart">Cart</a>
+        </li>
+    )}
     {!isAuthenticated && (
         <li>
             <button

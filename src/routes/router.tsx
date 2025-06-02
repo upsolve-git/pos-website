@@ -17,6 +17,7 @@ import ServiceDetailPage from "../pages/ServiceDetailPage";
 
 import { getAuth } from "../services/auth";
 import AppointmentHistoryPage from "../pages/AppointmentHistoryPage";
+import CartPage from "../pages/CartPage";
 import AppointmentDetailPage from "../pages/AppointmentDetailPage";
 import ProfilePage from "../pages/ProfilePage";
 import SalonDetailPage from "../pages/SalonDetailPage";
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
             {
                 path: "appointments",
                 element: <AppointmentHistoryPage />,
+            },
+            {
+                path: "cart",
+                element: <CartPage />,
             },
             {
                 path: "/appointmentDetail/:id",

@@ -58,7 +58,7 @@ const SmallNavbar: React.FC<SmallNavbarProps> = () => {
                                 Sign In
                             </button>
                         </li>} 
-                        {/* { isAuthenticated && <li className="py-1 px-2 "><a href="/cart">Cart</a></li>} */}
+                        { isAuthenticated && <li className="py-1 px-2 "><a href="/cart">Cart</a></li>}
                         { isAuthenticated && <li className="py-1 px-2 "><a href="/appointments">Appointments</a></li>}
                         { isAuthenticated && <li className="py-1 px-2 ">
                             <button

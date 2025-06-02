@@ -93,7 +93,7 @@ const ServiceDetailPage: React.FC = () => {
       const formattedDate = selectedDate.toISOString().split("T")[0];
 
       const response = await axios.post(
-        base_url+ "api/customer/book-appointment",
+        base_url+ "api/customer/add-to-cart",
         {
           customer_id,
           service_id,
@@ -221,7 +221,7 @@ const ServiceDetailPage: React.FC = () => {
           {/* Action Button */}
           <div className="w-full tablet:w-auto">
             <ActionButton
-              label={loading ? "Booking..." : "Book Appointment"}
+              label={loading ? "Adding..." : "Add to Cart"}
               callbackFunc={appointmentHandler}
             />
           </div>
